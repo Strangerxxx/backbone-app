@@ -13,7 +13,7 @@ define([
 
         tagName: 'div',
 
-        id: '',
+        id: 'main-menu',
 
         className: '',
 
@@ -24,9 +24,11 @@ define([
         },
 
         render: function () {
+            console.log('Rendering VIEW!');
             this.$el.html(this.template(this.model.toJSON()));
         }
     });
 
     return AppView;
+
 });
