@@ -9,7 +9,7 @@ define([
     var AppRouter = Backbone.Router.extend({
         routes: {
             '' : 'home',    // trigger the route home
-            '#/login' : 'login'    // trigger the login template
+            'login' : 'login'    // trigger the login template
             // 'users/:id' // match user id
             // 'users/*id' // match anything
             //'users/:'

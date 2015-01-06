@@ -13,11 +13,13 @@ define([
 
         tagName: 'form',
 
-        id: 'login-form',
+        id: '',
 
-        className: 'user-login',
+        className: 'user-login-form',
 
-        events: {},
+        events: {
+        },
+            //'submit': 'userLogin'
 
         //userLogin: function (ev) {
         //    var userDetails = $(ev.currentTarget);
@@ -31,14 +33,9 @@ define([
 
 
         render: function () {
-            var template = _.template($('#user-login').html(), {});
-            this.$el.html(template);
+            console.log('Rendering LOGIN!');
+            this.$el.html(this.template(this.model.toJSON()));
         }
-
-        //render: function () {
-        //    console.log('Rendering LOGIN!');
-        //    this.$el.html(this.template(this.model.toJSON()));
-        //}
     });
     return LoginView;
 

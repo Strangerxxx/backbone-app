@@ -58,11 +58,7 @@ require([
 
     router.on('route:home', function () {
         appView.render();
-        //loginView.render();
         $('#top-menu').append( appView.$el );
-        //$('#user-login').append( loginView.$el );
-        console.log('appView');
-        console.log(appView)
     });
 
     router.on('route:login', function () {
