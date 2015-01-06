@@ -64,8 +64,6 @@ require([
     router.on('route:login', function () {
         loginView.render();
         $('#user-login').append( loginView.$el );
-        console.log('loginView');
-        console.log(loginView)
     });
 
     Backbone.history.start();
