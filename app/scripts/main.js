@@ -22,58 +22,32 @@ require.config({
 
 require([
     'backbone',
+    'routers/app',
     'collections/app',
-    'collections/users',
-    'models/app',
-    'models/user',
     'views/login',
-    'views/nav',
-    'views/sidebar',
-    'views/content',
-    'routers/app'
+    'views/top-bar',
+    'views/side-bar',
+    'views/page'
 ], function (
     Backbone,
+    AppRouter,
     AppCollection,
-    UsersCollection,
-    AppModel,
-    UserModel,
-    LoginView,
-    NavView,
-    SidebarView,
-    ContentView,
-    AppRouter
+    LoginWidget,
+    TopBarWidget,
+    SideBarWidget,
+    PageView
 ){
-    var appModel = new AppModel();
-    var userModel = new UserModel();
-
     var appCollection = new AppCollection();
-    var usersCollection = new UsersCollection();
-
-    var navView = new NavView({model: appCollection});
-    var loginView = new LoginView({model: usersCollection});
-    var sidebarView = new SidebarView({model: appCollection});
-    var contentView = new ContentView({model: appCollection});
-
     var router = new AppRouter();
+    var containter = $('body > div.container');
 
     router.on('route:login', function () {
-        $('#wrapper').remove();
-        navView.render();
-        loginView.render();
-        $('#top-menu').append( navView.$el );
-        $('#user-login').append( loginView.$el );
+        var loginWidget =  LoginWidget({model: appCollection});
+        loginWidget.render();
+        containter.append(loginView.$el);
     });
-
     router.on('route:home', function () {
-        navView.render();
-        sidebarView.render();
-        contentView.render();
-        $('#top-menu').append( navView.$el );
-        $('#sidebar-wrapper').append( sidebarView.$el );
-        $('#page-content-wrapper').append( contentView.$el );
-        //$('#wrapper').append( contentView.$el );
-        // Скрыть/Показать боковое меню
-
+        var 
     });
 
     Backbone.history.start();
