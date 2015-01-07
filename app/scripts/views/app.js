@@ -24,7 +24,6 @@ define([
         },
 
         render: function () {
-            console.log('Rendering VIEW!');
             this.$el.html(this.template(this.model.toJSON()));
         }
     });

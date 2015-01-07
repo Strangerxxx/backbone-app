@@ -11,29 +11,27 @@ define([
     var LoginView = Backbone.View.extend({
         template: JST['app/scripts/templates/login.ejs'],
 
-        tagName: 'form',
+        tagName: 'div',
 
         id: '',
 
-        className: 'user-login-form',
+        className: 'user-login-form input-group',
 
         events: {
         },
-            //'submit': 'userLogin'
+            //'submit .user-login': 'userLogin'
 
         //userLogin: function (ev) {
         //    var userDetails = $(ev.currentTarget);
         //    console.log(userDetails);
+        //
         //},
 
         initialize: function () {
-            console.log('from init', this);
             this.listenTo(this.model, 'change', this.render);
         },
 
-
         render: function () {
-            console.log('Rendering LOGIN!');
             this.$el.html(this.template(this.model.toJSON()));
         }
     });

@@ -62,8 +62,11 @@ require([
     });
 
     router.on('route:login', function () {
+        appView.render();
         loginView.render();
+        $('#top-menu').append( appView.$el );
         $('#user-login').append( loginView.$el );
+        $("#login").hide();
     });
 
     Backbone.history.start();
