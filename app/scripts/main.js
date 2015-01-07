@@ -26,51 +26,59 @@ require([
     'collections/users',
     'models/app',
     'models/user',
-    'views/app',
     'views/login',
+    'views/nav',
+    'views/sidebar',
+    'views/content',
     'routers/app'
 ], function (
     Backbone,
     AppCollection,
-    UserCollection,
+    UsersCollection,
     AppModel,
     UserModel,
-    AppView,
     LoginView,
+    NavView,
+    SidebarView,
+    ContentView,
     AppRouter
 ){
-    var appCollection = new AppCollection();
-
     var appModel = new AppModel();
-
-    var appView = new AppView({model: appCollection});
-
-    var userCollection = new UserCollection();
-
     var userModel = new UserModel();
 
-    var loginView = new LoginView({model: userCollection});
+    var appCollection = new AppCollection();
+    var usersCollection = new UsersCollection();
+
+    var navView = new NavView({model: appCollection});
+    var loginView = new LoginView({model: usersCollection});
+    var sidebarView = new SidebarView({model: appCollection});
+    var contentView = new ContentView({model: appCollection});
 
     var router = new AppRouter();
 
-
-    console.log(loginView);
-
-    router.on('route:home', function () {
-        appView.render();
-        $('#top-menu').append( appView.$el );
+    router.on('route:login', function () {
+        $('#wrapper').remove();
+        navView.render();
+        loginView.render();
+        $('#top-menu').append( navView.$el );
+        $('#user-login').append( loginView.$el );
     });
 
-    router.on('route:login', function () {
-        appView.render();
-        loginView.render();
-        $('#top-menu').append( appView.$el );
-        $('#user-login').append( loginView.$el );
-        $("#login").hide();
+    router.on('route:home', function () {
+        navView.render();
+        sidebarView.render();
+        contentView.render();
+        $('#top-menu').append( navView.$el );
+        $('#sidebar-wrapper').append( sidebarView.$el );
+        $('#page-content-wrapper').append( contentView.$el );
+        //$('#wrapper').append( contentView.$el );
+        // Скрыть/Показать боковое меню
+
     });
 
     Backbone.history.start();
 });
+
 
 
 //require([

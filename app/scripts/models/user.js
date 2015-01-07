@@ -7,7 +7,7 @@ define([
     'use strict';
 
     var UserModel = Backbone.Model.extend({
-        url: '/users',
+        url: '',
 
         initialize: function() {
         },

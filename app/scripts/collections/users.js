@@ -3,14 +3,14 @@
 define([
     'underscore',
     'backbone',
-    'models/app'
+    'models/user'
 ], function (_, Backbone, UserModel) {
     'use strict';
 
-    var UserCollection = Backbone.Collection.extend({
+    var UsersCollection = Backbone.Collection.extend({
         model: UserModel
     });
 
-    return UserCollection;
+    return UsersCollection;
 });
 

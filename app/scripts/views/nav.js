@@ -8,8 +8,8 @@ define([
 ], function ($, _, Backbone, JST) {
     'use strict';
 
-    var AppView = Backbone.View.extend({
-        template: JST['app/scripts/templates/app.ejs'],
+    var NavView = Backbone.View.extend({
+        template: JST['app/scripts/templates/nav.ejs'],
 
         tagName: 'div',
 
@@ -28,6 +28,6 @@ define([
         }
     });
 
-    return AppView;
+    return NavView;
 
 });
