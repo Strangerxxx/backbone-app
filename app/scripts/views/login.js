@@ -15,7 +15,7 @@ define([
 
         id: '',
 
-        className: 'user-login-form input-group',
+        className: 'user-login-form',
 
         events: {
         },
